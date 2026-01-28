@@ -28,3 +28,9 @@ Please download it from:
 ```bash
 pip install -r requirements.txt
 python src/main.py
+## System Requirements
+Python 3.x
+OpenCV
+MediaPipe
+etc.
+
