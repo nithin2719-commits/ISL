@@ -1,4 +1,9 @@
 opencv-python
-mediapipe
-numpy
+mediapipe==0.10.14
+numpy>=1.26
+scikit-learn>=1.4
+pyttsx3
 
+# web UI (web/server.py)
+fastapi
+uvicorn
