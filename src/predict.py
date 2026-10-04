@@ -2,8 +2,10 @@ import pickle
 import numpy as np
 import os
 
+DEFAULT_MODEL = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'models', 'isl_model.p')
+
 class SignClassifier:
-    def __init__(self, model_path='../models/isl_model.p'):
+    def __init__(self, model_path=DEFAULT_MODEL):
         self.model = None
         if os.path.exists(model_path):
             with open(model_path, 'rb') as f:
