@@ -4,3 +4,4 @@ data/
 *.jpeg
 __pycache__/
 *.pyc
+!assets/*.png
