@@ -2,3 +2,5 @@ data/
 *.jpg
 *.png
 *.jpeg
+__pycache__/
+*.pyc
