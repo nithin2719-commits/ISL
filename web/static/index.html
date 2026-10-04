@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ISL Translator</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%23ff9933%22/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="flag" aria-hidden="true"><i></i><i></i><i></i></span>
+      <div>
+        <div class="title">ISL Translator</div>
+        <div class="muted">Indian Sign Language → subtitles</div>
+      </div>
+    </div>
+    <div class="status">
+      <span class="pill" id="pill-model">model —</span>
+      <span class="pill" id="pill-hand"><i></i>no hand</span>
+    </div>
+  </header>
+
+  <main class="grid">
+    <section>
+      <div class="stage" id="stage">
+        <canvas id="view"></canvas>
+        <video id="video" playsinline muted hidden></video>
+        <div class="empty" id="empty">
+          <div class="big">Hold one hand up to the camera</div>
+          <p>MediaPipe finds your hand in the browser. Only 21 landmark positions are sent to the model, never the video.</p>
+          <div class="row">
+            <button class="btn primary" id="btn-cam">Start camera</button>
+            <label class="btn" for="file">Try a photo</label>
+            <input type="file" id="file" accept="image/*" hidden>
+          </div>
+        </div>
+        <div class="detect mono" id="detect">Detecting: —</div>
+      </div>
+      <p class="hint">Hold a sign steady for <b>15 frames</b> to type it. <kbd>Space</kbd> space · <kbd>Backspace</kbd> delete · <kbd>Enter</kbd> speak · <kbd>C</kbd> clear</p>
+    </section>
+
+    <aside class="side">
+      <div class="card letter-card">
+        <div class="ring" id="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="track"/><circle cx="60" cy="60" r="52" class="fill" id="ring-fill"/></svg><span id="letter">–</span></div>
+        <div class="letter-meta">
+          <div class="label">Current sign</div>
+          <div class="conf mono" id="conf">0%</div>
+          <ol class="top3" id="top3"></ol>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="label">Subtitle</div>
+          <div class="row tight">
+            <button class="btn small" id="btn-space">Space</button>
+            <button class="btn small" id="btn-back">Delete</button>
+            <button class="btn small" id="btn-clear">Clear</button>
+            <button class="btn small accent" id="btn-speak">Speak</button>
+          </div>
+        </div>
+        <div class="subtitle" id="subtitle"><span class="placeholder">Signed letters appear here</span></div>
+      </div>
+
+      <div class="card">
+        <div class="label">Signs the model knows</div>
+        <div class="keys" id="keys"></div>
+      </div>
+    </aside>
+  </main>
+
+  <script type="module" src="/static/app.js"></script>
+</body>
+</html>
