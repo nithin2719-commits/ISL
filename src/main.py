@@ -31,7 +31,6 @@ def main():
         success, frame = cap.read()
         if not success: break
         
-        frame = cv2.flip(frame, 1)
         h, w, _ = frame.shape
         
         # Detect Hands
@@ -81,6 +80,9 @@ def main():
             engine.runAndWait()
 
         # --- DISPLAY UI ---
+        # Mirror only for display. Prediction runs on the unflipped frame above,
+        # because the model was trained on unmirrored photos (train_from_images.py).
+        frame = cv2.flip(frame, 1)
         # Top Bar (Debug)
         cv2.rectangle(frame, (0, 0), (w, 60), (30, 30, 30), cv2.FILLED)
         bar_width = int((frame_count / FRAME_THRESHOLD) * 200)
